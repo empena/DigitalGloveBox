@@ -1,19 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Image, Item } from "semantic-ui-react";
+import { Item } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Car from "./Car";
-import {
-  RowCenter,
-  Title,
-  Paragraph,
-  CarCard,
-  ImgCar,
-  CarsRow,
-} from "../styles/DashBoard";
 
-import { Button } from '../../styled_component/styledComponents';
+import { Button } from "../../styled_component/styledComponents";
 
 const Cars = (props) => {
   const [cars, setCars] = useState([]);
@@ -34,26 +26,27 @@ const Cars = (props) => {
 
   const renderCars = () => {
     return cars.map((car) => (
-      <div key={`car-${car.id}`} style={styles.carsRow} >
+      <div key={`car-${car.id}`} style={styles.carsRow}>
         <Car car={car} />
-        <br/>
-        <br/>
+        <br />
+        <br />
       </div>
     ));
   };
 
   return (
-
     <Item>
       {cars.length === 0 ? (
-        <Link to={{ pathname: `/CarApi` }}><Button>Add Your First Car</Button></Link>
+        <Link to={{ pathname: `/CarApi` }}>
+          <Button>Add Your First Car</Button>
+        </Link>
       ) : (
         <>
           <Link to={{ pathname: `/CarApi` }}>
-            <Button>Add Car</Button>
+            <Button>Add Vehicle</Button>
           </Link>
-          <br/>
-            <br />
+          <br />
+          <br />
           {renderCars()}{" "}
         </>
       )}
@@ -65,11 +58,9 @@ export default Cars;
 
 const styles = {
   carsRow: {
-  display: 'flex', 
-  justifyContent: 'center',
-  width: '100%',
-  marginBottom: '3em'
-}
-}
-
-
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    marginBottom: "3em",
+  },
+};

@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-
-export const EmergencyStyles  =  styled.div`
+export const EmergencyStyles = styled.div`
   margin: 5vh auto 5vh auto;
   width: 60%;
   border: 1px solid black;

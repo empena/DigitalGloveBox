@@ -1,13 +1,13 @@
 import React from "react";
 import Parse from "parse";
-import Select, { components }  from 'react-select';
-import { FormContainer, Button } from '../../styled_component/styledComponents';
+import Select, { components } from "react-select";
+import { FormContainer, Button } from "../../styled_component/styledComponents";
 import AddCar from "./AddCar";
 
 class carApi extends React.Component {
   constructor(props) {
     super(props);
-    
+
     Parse.initialize(
       "vSdQDkYeIYIQAKwPS12Z1WDXc5qMBTziQDL4oFzo",
       "m0aSQQhTdHbHfcJzaARaAmYC2EaTDj7wittdIr01"
@@ -18,7 +18,7 @@ class carApi extends React.Component {
       cars: [],
       make: [],
       carMakeOfYear: [],
-      yearsChosen: '',
+      yearsChosen: "",
       makeChosen: [],
       carModelofMake: [],
       modelChosen: [],
@@ -50,38 +50,35 @@ class carApi extends React.Component {
     this.setState({ ...this.state, toggleCarForm: !toggleCarForm });
   };
   yearOnChange = (selectedOption) => {
-    console.log(selectedOption)
+    console.log(selectedOption);
     this.setState({ yearsChosen: selectedOption.value });
-    console.log(this.state.yearsChosen)
-    return (() => {
-      this.carApi();})
-      // this.setState({ selectedOption });
-      
-      
-    }
+    console.log(this.state.yearsChosen);
+    return () => {
+      this.carApi();
+    };
+  };
 
-    
-    
-  handleChange = ({value, label}) => {
+  handleChange = ({ value, label }) => {
     console.log(`Option selected:`, value);
-    this.setState({ ...this.state, selectedOption: value}, () => {
-      this.carApi()})
+    this.setState({ ...this.state, selectedOption: value }, () => {
+      this.carApi();
+    });
+  };
 
-    }
-  
-
-  makeOnChange = ({value, label}) => {
+  makeOnChange = ({ value, label }) => {
     this.setState({ makeChosen: value }, () => {
       this.carApi();
     });
   };
 
-  modelOnChange = ({value, label}) => {
+  modelOnChange = ({ value, label }) => {
     this.setState({ modelChosen: value });
   };
 
   carApi = () => {
-    const Carmodels_Car_Model_List = Parse.Object.extend("Carmodels_Car_Model_List");
+    const Carmodels_Car_Model_List = Parse.Object.extend(
+      "Carmodels_Car_Model_List"
+    );
     const query = new Parse.Query(Carmodels_Car_Model_List);
     query.limit(1000);
     query.equalTo("Year", this.state.selectedOption);
@@ -96,15 +93,16 @@ class carApi extends React.Component {
 
       let modelArray = [...new Set(modelChosenArray.map((d) => d.Model))];
 
-      let carModelofMake = modelArray.map((str) => ({ value: str, label: str }));
+      let carModelofMake = modelArray.map((str) => ({
+        value: str,
+        label: str,
+      }));
       this.setState({ carModelofMake: carModelofMake });
 
       var carMakeOfYear = makeArray.map((str) => ({ value: str, label: str }));
       this.setState({ carMakeOfYear: carMakeOfYear });
     });
   };
-
-
 
   toggleForm = () => {
     var carMakeOfYear = this.state.carMakeOfYear;
@@ -121,65 +119,47 @@ class carApi extends React.Component {
         </>
       );
     } else {
- 
-}
-      return (
-        <>
-          <FormContainer> 
-       
-
-          <Select 
+    }
+    return (
+      <>
+        <FormContainer>
+          <Select
             onChange={this.handleChange}
             options={options}
             autoFocus={true}
             require
           />
-          {/* <DropDown
-            placeholder="Select Year"
-            fluid
-            search
-            selection
-            options={carYears}
-            onChange={this.yearOnChange}
-            required
-          /> */}
           <Select
             options={carMakeOfYear}
             onChange={this.makeOnChange}
             require
           />
           <Select
-            
             options={carModelofMake}
             onChange={this.modelOnChange}
             require
           />
           <Button onClick={this.handleClick}> Add Car Information </Button>
-          </FormContainer> 
-        </>
-      );
-    }
-  
+        </FormContainer>
+      </>
+    );
+  };
 
   render() {
-    return (
-      <div style={styles.container}>
-        {this.toggleForm()}
-      </div>
-    )
+    return <div style={styles.container}>{this.toggleForm()}</div>;
   }
 }
 export default carApi;
 
 const styles = {
   container: {
-    padding: '5em 10% 6em',
-    height: '100%',
-    position: 'relative',
-    minHeight: '100%',
-    overflow: 'auto',
+    padding: "5em 10% 6em",
+    height: "100%",
+    position: "relative",
+    minHeight: "100%",
+    overflow: "auto",
   },
-}
+};
 
 const options = [
   { value: 1992, label: 1992 },

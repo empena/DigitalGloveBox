@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const RowCenter = styled.div`
   display: flex;
   flex-direction: row;
@@ -8,15 +7,13 @@ export const RowCenter = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.5em;
+  font-size: 2em;
   color: black;t
 `;
 
-export const Paragraph = styled.p` 
+export const Paragraph = styled.p`
   font-size: 1em;
 `;
-
-
 
 export const CarCard = styled.div`
   display: flex;
@@ -42,7 +39,7 @@ export const ContactCard = styled.div`
 export const ImgCar = styled.img`
   width: 100%;
   height: 100%;
-  background-color: #C0C0C8;
+  background-color: #c0c0c8;
 `;
 
 export const Button = styled.button`
@@ -64,9 +61,8 @@ export const Button = styled.button`
   }
 `;
 export const ContactLink = styled.link`
-display: none;
-
-`
+  display: none;
+`;
 export const ContactButton = styled.button`
   font-size: 1em;
   width: 1005:
@@ -95,23 +91,22 @@ export const Form = styled.form`
 `;
 
 export const LeftHalf = styled.div`
-display: flex;
-flex-direction: column;
-background-color: #C0C0C8;
-flex: 50%;
-`
+  display: flex;
+  flex-direction: column;
+  background-color: #c0c0c8;
+  flex: 50%;
+`;
 
 export const RightHalf = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
   flex: 50%;
-  
-`
+`;
 export const CarsRow = styled.div`
     display: 'flex', 
     justifyContent: 'tcenter',t
     width: '100%',
     marginBottom: '3em'
-`
+`;

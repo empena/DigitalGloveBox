@@ -1,4 +1,4 @@
-import { useState, } from "react";
+import { useState } from "react";
 
 export const useFormInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -8,4 +8,3 @@ export const useFormInput = (initialValue) => {
     onChange: (e) => setValue(e.target.value),
   };
 };
-

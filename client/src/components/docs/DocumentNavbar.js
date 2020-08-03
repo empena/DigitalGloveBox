@@ -1,96 +1,108 @@
-import React, { useState, useEffect } from 'react'
-import { Menu, Button, Icon } from 'semantic-ui-react'
-import axios from 'axios'
-import DocumentsShow from './DocumentsShow'
-import DocumentForm from './DocumentForm'
+import React, { useState, useEffect } from "react";
+import { Menu, Button, Icon } from "semantic-ui-react";
+import axios from "axios";
+import DocumentsShow from "./DocumentsShow";
+import DocumentForm from "./DocumentForm";
 
-import 'semantic-ui-css/semantic.min.css';
-
+import "semantic-ui-css/semantic.min.css";
 
 const DocumentNavbar = (props) => {
-  
-  const [ category, setCategory] = useState('insurance')
-  const [ docs, setDocs ] = useState([])
-  const [ toggleFormShow, setToggleFormShow ] = useState(false)
-  const {car_id} = props
- 
-  let categoryDocuments = null
+  const [category, setCategory] = useState("insurance");
+  const [docs, setDocs] = useState([]);
+  const [toggleFormShow, setToggleFormShow] = useState(false);
+  const { car_id } = props;
 
-  useEffect( () => {
-    axios.get(`/api/cars/${car_id}/documents/`).then(res => {
-    return setDocs(res.data )
-    }).catch(err => {
-      console.log(err)
-    }
-    )}, [car_id])
+  let categoryDocuments = null;
+
+  useEffect(() => {
+    axios
+      .get(`/api/cars/${car_id}/documents/`)
+      .then((res) => {
+        return setDocs(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [car_id]);
 
   const handleItemClick = (e, { name }) => {
     setCategory(name);
-  }
+  };
 
   const renderCategoryDocs = () => {
-    switch (category){  
+    switch (category) {
       case "insurance":
-         categoryDocuments = docs.filter((doc) => doc.category === 'insurance')
+        categoryDocuments = docs.filter((doc) => doc.category === "insurance");
         break;
       case "registration":
-         categoryDocuments = docs.filter((doc) => doc.category === 'registration')
+        categoryDocuments = docs.filter(
+          (doc) => doc.category === "registration"
+        );
         break;
       case "service records":
-         categoryDocuments = docs.filter((doc) => doc.category === 'service records')
+        categoryDocuments = docs.filter(
+          (doc) => doc.category === "service records"
+        );
         break;
       case "other":
-         categoryDocuments = docs.filter((doc) => doc.category === 'other')
+        categoryDocuments = docs.filter((doc) => doc.category === "other");
         break;
-      default: 
-      categoryDocuments = docs
-    }   
-      return(
-        <div>
-          <DocumentsShow docs={categoryDocuments} car_id={car_id}/>
-        </div>
-      )   
+      default:
+        categoryDocuments = docs;
     }
+    return (
+      <div>
+        <DocumentsShow docs={categoryDocuments} car_id={car_id} />
+      </div>
+    );
+  };
 
-    const toggleForm = () => {
-      if (toggleFormShow === true){
-        return ( <DocumentForm car_id={car_id} /> )
-      }
+  const toggleForm = () => {
+    if (toggleFormShow === true) {
+      return <DocumentForm car_id={car_id} />;
     }
+  };
 
   return (
     <div>
       <Menu pointing secondary>
         <Menu.Item
-          name='insurance'
-          active={category === 'insurance'}
+          name="insurance"
+          active={category === "insurance"}
           onClick={handleItemClick}
         />
         <Menu.Item
-          name='registration'
-          active={category === 'registration'}
+          name="registration"
+          active={category === "registration"}
           onClick={handleItemClick}
         />
         <Menu.Item
-          name='service records'
-          active={category === 'service records'}
+          name="service records"
+          active={category === "service records"}
           onClick={handleItemClick}
         />
         <Menu.Item
-          name='other'
-          active={category === 'other'}
+          name="other"
+          active={category === "other"}
           onClick={handleItemClick}
         />
       </Menu>
       <br />
-      <Button onClick={()=>{setToggleFormShow(!toggleFormShow)}}><Icon name="plus circle" />UPLOAD YOUR DOCUMENTS</Button>
-      
+      <Button
+        onClick={() => {
+          setToggleFormShow(!toggleFormShow);
+        }}
+      >
+        <Icon name="plus circle" />
+        UPLOAD YOUR DOCUMENTS
+      </Button>
+
       {toggleForm()}
       <br />
       <br />
       {renderCategoryDocs()}
     </div>
-  ) 
-}
+  );
+};
 
-export default DocumentNavbar
+export default DocumentNavbar;

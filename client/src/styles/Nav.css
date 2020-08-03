@@ -18,13 +18,13 @@
   border: none;
   outline: none;
   color: #d2e0e0;
-  padding: 1.15em .5em;
+  padding: 1.15em 0.5em;
   background-color: inherit;
   cursor: pointer;
-
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
   color: white;
   /* text-decoration: underline gray; */
 }
@@ -34,7 +34,7 @@
   position: absolute;
   background-color: white;
   min-width: 160px;
-  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   cursor: pointer;
 }
@@ -51,7 +51,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #C0C0C8;
+  background-color: #c0c0c8;
   color: black;
 }
 
@@ -64,9 +64,8 @@
 }
 
 .activeStyle:hover {
-  color: white
+  color: white;
 }
-
 
 /* 
 <Link style={styles.link} to='/'>

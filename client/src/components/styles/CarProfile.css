@@ -9,7 +9,7 @@
 }
 
 hr.solid {
-  border-top: 1.5px solid #C0C0C8;
+  border-top: 1.5px solid #c0c0c8;
 }
 
 table {
@@ -34,7 +34,7 @@ td {
   table {
     border: 0;
   }
-  
+
   td {
     display: block;
     font-size: 1em;

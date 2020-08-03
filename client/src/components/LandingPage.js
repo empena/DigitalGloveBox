@@ -6,8 +6,7 @@ const LandingPage = () => {
       <div style={styles2}>
         <h1 style={{ fontSize: "64px" }}> Digital Glove Box</h1>
         <h3 style={{ wordWrap: "break-word" }}>
-          Never look for your insurance card, service records or any document in
-          your glovebox again.
+          Never look for your vehicles paper records in the glovebox again.
         </h3>
         <br />
       </div>

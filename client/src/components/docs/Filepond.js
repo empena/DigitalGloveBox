@@ -12,12 +12,12 @@ export default class Filepond extends React.Component {
     super(props);
     this.state = {
       files: [],
-     };
+    };
   }
 
   refreshPage = () => {
-    setTimeout(()=> window.location.reload(false), 7000);  
-  }
+    setTimeout(() => window.location.reload(false), 7000);
+  };
 
   handleInit() {
     console.log("FilePond instance has initialised, pond is:", this.pond);
@@ -27,7 +27,7 @@ export default class Filepond extends React.Component {
     const { route } = this.props;
 
     return (
-      <div className="App"  >
+      <div className="App">
         <FilePond
           ref={(ref) => (this.pond = ref)}
           files={this.state.files}
@@ -77,13 +77,11 @@ export default class Filepond extends React.Component {
           onupdatefiles={(fileItems) => {
             this.setState({
               files: fileItems.map((fileItem) => fileItem.file),
-              
             });
-            if(this.props.refresh){
-            this.refreshPage()}
+            if (this.props.refresh) {
+              this.refreshPage();
+            }
           }}
-          
-
         />
       </div>
     );
