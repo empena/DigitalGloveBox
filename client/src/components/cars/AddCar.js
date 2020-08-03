@@ -58,7 +58,6 @@ const AddCar = (props) => {
       .then((res) => {
         return setId(res.data.id), setToggleForm("filepond");
       })
-      // (res => setRedirect({redirect:"/"}))
       .catch((err) => {
         console.log(err);
       });
